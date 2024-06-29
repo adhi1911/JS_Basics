@@ -1,0 +1,1 @@
+console.log(game1.push(game2));
