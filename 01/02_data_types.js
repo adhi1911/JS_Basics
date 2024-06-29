@@ -17,3 +17,18 @@ let isMale = true; // boolean
 //null => standalone value
 //object => collection of key value pairs
 //symbol => unique identifier
+
+
+//#primitive data types : 7
+//Number
+//BigInt
+//String
+//Boolean
+//undefined
+//null
+//symbol
+
+//Reference data types : 3
+//Object
+//Array
+//Function
