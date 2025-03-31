@@ -1,0 +1,116 @@
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 300px;
+    max-width: 750px;
+    min-width: 480px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f6f9fc 0%, #eef2f7 100%);
+}
+
+.lastResult {
+    color: #4a5568;
+    padding: 7px;
+}
+
+.guesses {
+    color: #4a5568;
+    padding: 7px;
+    background-color: rgba(224, 224, 224, 0.5);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+}
+
+button {
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    color: white;
+    width: 250px;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 18px;
+    border: none;
+    margin-top: 30px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(41, 128, 185, 0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(41, 128, 185, 0.3);
+}
+
+#subt {
+    background: linear-gradient(145deg, #4a5568, #2d3748);
+    color: white;
+    width: 200px;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 18px;
+    border: none;
+    margin-top: 50px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(45, 55, 72, 0.2);
+}
+
+#subt:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 55, 72, 0.3);
+}
+
+#guessField {
+    color: #4a5568;
+    width: 250px;
+    height: 50px;
+    font-size: 24px;
+    border: 2px solid rgba(224, 224, 224, 0.5);
+    border-radius: 12px;
+    margin-top: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#guessField:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.2);
+}
+
+#guess {
+    font-size: 42px;
+    margin-top: 80px;
+    color: #2d3748;
+    font-weight: 300;
+}
+
+#wrapper {
+    box-sizing: border-box;
+    text-align: center;
+    width: 450px;
+    height: 550px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #4a5568;
+    font-size: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05),
+                0 1px 8px rgba(0,0,0,0.02);
+    padding: 20px;
+    backdrop-filter: blur(8px);
+}
+
+h1 {
+    background: transparent;
+    color: #2d3748;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 16px;
+    text-align: center;
+    color: #718096;
+    line-height: 1.6;
+}

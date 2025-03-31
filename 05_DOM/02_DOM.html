@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>adhi1911 | DOM</title>
+    </head>
+
+    <body style = "background-color: rgb(77, 77, 77); color:aliceblue">
+
+        <ul class="language">
+            <li>JavaScript</li>
+        </ul>
+
+    </body>
+
+    <script>
+        function add_language(langName){
+            let lu = document.querySelector('.language');
+            const li = document.createElement('li');
+            li.textContent = langName;
+            lu.appendChild(li);
+            // when we say append child engine has to traverse the whole tree to find the last element
+            // so it is better to store the reference of the last element
+        }
+        add_language('Python');
+        add_language('Java');
+
+        function add_opti_lang(langName){
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(langName));
+
+            document.querySelector('.language').appendChild(li);
+        }
+
+        add_opti_lang('C++');
+        
+        //edit 
+        const secLang = document.querySelector("li:nth-child(1)")
+        // secLang.innerHTML = "TypeScript";
+        const newLi = document.createElement('li');
+        newLi.textContent = "TypeScript"
+        secLang.replaceWith(newLi);
+
+        
+
+    </script>
+
+
+</html>
