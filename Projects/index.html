@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="display">
+                <div class="model">CAL•M1</div>
+                <div class="result" id="result">0</div>
+            </div>
+            <div class="buttons">
+                <button class="btn function" data-action="clear" style="grid-area: clear;">C</button>
+                <button class="btn function" data-action="parenthesis" style="grid-area: parens;">( )</button>
+                <button class="btn function" data-action="square" style="grid-area: square;">x²</button>
+                <button class="btn function" data-action="sqrt" style="grid-area: root;">√</button>
+                <button class="btn function" data-action="backspace" style="grid-area: back;">←</button>
+                
+                <button class="btn number" data-value="7" style="grid-area: seven;">7</button>
+                <button class="btn number" data-value="8" style="grid-area: eight;">8</button>
+                <button class="btn number" data-value="9" style="grid-area: nine;">9</button>
+                <button class="btn function" data-action="percent" style="grid-area: percent;">%</button>
+                <button class="btn operator" data-action="divide" style="grid-area: divide;">÷</button>
+                
+                <button class="btn number" data-value="4" style="grid-area: four;">4</button>
+                <button class="btn number" data-value="5" style="grid-area: five;">5</button>
+                <button class="btn number" data-value="6" style="grid-area: six;">6</button>
+                <button class="btn operator" data-action="multiply" style="grid-area: multiply;">×</button>
+                <button class="btn operator" data-action="add" style="grid-area: plus;">+</button>
+                
+                <button class="btn number" data-value="1" style="grid-area: one;">1</button>
+                <button class="btn number" data-value="2" style="grid-area: two;">2</button>
+                <button class="btn number" data-value="3" style="grid-area: three;">3</button>
+                <button class="btn operator" data-action="subtract" style="grid-area: minus;">-</button>
+                
+                <button class="btn number" data-value="0" style="grid-area: zero;">0</button>
+                <button class="btn number" data-value="000" style="grid-area: triple-zero;">000</button>
+                <button class="btn function" data-action="decimal" style="grid-area: decimal;">.</button>
+                <button class="btn equals" data-action="calculate" style="grid-area: equals;">=</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

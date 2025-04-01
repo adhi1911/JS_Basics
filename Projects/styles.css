@@ -1,0 +1,744 @@
+Base calculator styling
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Audiowide', cursive;
+    background: #f0f0f0;
+    overflow-x: hidden;
+}
+
+.calculator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: 
+        /* Vignette effect */
+        radial-gradient(
+            circle at center,
+            transparent 0%,
+            rgba(25, 38, 44, 0.3) 100%
+        ),
+        /* Ambient light source */
+        radial-gradient(
+            circle at 30% 30%,
+            rgb(158, 216, 243) 0%,
+            transparent 60%
+        ),
+        /* Secondary light source */
+        radial-gradient(
+            circle at 70% 70%,
+            rgba(255, 255, 255, 0.837) 0%,
+            transparent 60%
+        ),
+        /* Base gradient */
+        linear-gradient(145deg, #2c3e50, #3a506b),
+        /* Texture */
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 0, 0, 0.1) 10px,
+            rgba(0, 0, 0, 0.1) 11px
+        );
+    position: relative;
+    overflow: hidden;
+}
+/* Enhanced 3D light source */
+.light-source {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.7;
+    animation: light-flicker 10s infinite;
+}
+
+@keyframes light-flicker {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.8; }
+}
+
+@keyframes light-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%); }
+    100% { transform: translateX(100%) translateY(100%); }
+}
+
+/* Enhanced shadow */
+.shadow {
+    position: absolute;
+    width: 420px;
+    height: 30px;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0) 70%
+    );
+    bottom: 50px;
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 1;
+    transform: translateZ(-10px) rotateX(60deg);
+}
+
+/* Brand logo */
+.brand-logo {
+    color: #333;
+    font-size: 12px;
+    text-align: right;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+    opacity: 0.7;
+}
+
+.calculator {
+    background-color: #eeeaea;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    width:600px;
+    /* transform: rotateX(5deg) rotateY(-3deg); */
+    /* transform-style: preserve-3d; */
+    border: 2px solid rgba(159, 157, 155, 0.9);
+    background: 
+        /*Bulge effect*/
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.1) 20%,
+            transparent 60%,
+            rgba(0, 0, 0, 0.1) 85%,
+            rgba(0, 0, 0, 0.15) 100%
+        ),
+        /* Base gradient */
+        linear-gradient(145deg, #979ba2, #858c98),
+        /* Horizontal lines */
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.07) 2px,
+            rgba(0, 0, 0, 0.07) 4px
+        ),
+        /* Vertical lines */
+        repeating-linear-gradient(
+            180deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.07) 2px,
+            rgba(0, 0, 0, 0.07) 4px
+        ),
+        /* Diagonal texture 45deg */
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.01) 0px,
+            rgba(255, 255, 255, 0.01) 1px,
+            rgba(0, 0, 0, 0.02) 1px,
+            rgba(0, 0, 0, 0.02) 2px
+        ),
+        /* Cross-hatching diagonal 135deg */
+        repeating-linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.01) 0px,
+            rgba(255, 255, 255, 0.01) 1px,
+            rgba(0, 0, 0, 0.02) 1px,
+            rgba(0, 0, 0, 0.02) 2px
+        );
+
+    box-shadow: 
+        20px 20px 60px rgba(0, 0, 0, 0.5),
+        -12px -12px 40px rgba(255, 255, 255, 0.05),
+        inset 0 0 15px rgba(0, 0, 0, 0.2),
+        /* Edge shadows for bulge effect */
+        inset 2px 2px 5px rgba(255, 255, 255, 0.2),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(159, 157, 155, 0.9);
+    border-radius: 16px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap : 20px;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    /* transform: perspective(1000px) rotateX(5deg) rotateY(-3deg); */
+}
+
+@keyframes calculator-hover {
+    0%, 100% { transform: rotateX(5deg) rotateY(-3deg) translateZ(0); }
+    50% { transform: rotateX(6deg) rotateY(-2deg) translateZ(5px); }
+}
+
+/* Enhanced metal texture */
+.calculator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.3) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.1) 100%
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.05) 2px,
+            rgba(255, 255, 255, 0.05) 3px
+        );
+    pointer-events: none;
+    border-radius: 16px;
+    z-index: 1;
+}
+
+/* Enhanced display */
+.display {
+    background-color: #849184;
+    margin-bottom: 35px;
+    padding: 15px 20px;
+    text-align: right;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 8px;
+    border: 3px solid rgba(79, 78, 78, 0.2);
+    box-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.3),
+        inset -2px -2px 4px rgba(64, 61, 61, 0.2),
+        0 1px 2px rgba(85, 76, 76, 0.4);
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(5px);
+    z-index: 2;
+    font-family: 'Audiowide', cursive;
+    overflow: hidden;
+}
+
+/* Display reflection */
+.display-reflection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.5;
+}
+
+/* Display glare */
+.display-glare {
+    position: absolute;
+    width: 150%;
+    height: 200%;
+    top: -50%;
+    left: -25%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 70%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+    animation: glare-move 8s infinite ease-in-out;
+}
+
+@keyframes glare-move {
+    0%, 100% { opacity: 0; transform: rotate(-45deg) translateX(-50%); }
+    50% { opacity: 0.3; transform: rotate(-45deg) translateX(50%); }
+}
+
+.previous-operand {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.7);
+    min-height: 24px;
+    position: relative;
+    z-index: 5;
+}
+
+.current-operand {
+    font-size: 2rem;
+    color: #000000;
+    min-height: 40px;
+    position: relative;
+    z-index: 5;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    padding: 15px;
+    background: 
+        linear-gradient(145deg, #9ca0a7, #6b6e73);
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    transform-style: preserve-3d;
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.3),
+        inset -2px -2px 6px rgba(255, 255, 255, 0.1),
+        inset 2px 2px 6px rgba(0, 0, 0, 0.2);
+    grid-template-areas: 
+        "clear parens square root back"
+        "seven eight nine percent divide"
+        "four five six multiply plus"
+        "one two three minus plus"
+        "zero triple-zero decimal equals equals";
+}
+
+/* Button positioning */
+.btn[data-all-clear] { grid-area: clear; }
+.btn[data-parens] { grid-area: parens; }
+.btn[data-square] { grid-area: square; }
+.btn[data-root] { grid-area: root; }
+.btn[data-delete] { grid-area: back; }
+.btn[data-number="7"] { grid-area: seven; }
+.btn[data-number="8"] { grid-area: eight; }
+.btn[data-number="9"] { grid-area: nine; }
+.btn[data-operation="%"] { grid-area: percent; }
+.btn[data-operation="÷"] { grid-area: divide; }
+.btn[data-number="4"] { grid-area: four; }
+.btn[data-number="5"] { grid-area: five; }
+.btn[data-number="6"] { grid-area: six; }
+.btn[data-operation="×"] { grid-area: multiply; }
+.btn[data-operation="+"] { grid-area: plus; height: 100%; }
+.btn[data-number="1"] { grid-area: one; }
+.btn[data-number="2"] { grid-area: two; }
+.btn[data-number="3"] { grid-area: three; }
+.btn[data-operation="-"] { grid-area: minus; }
+.btn[data-number="0"] { grid-area: zero; }
+.btn[data-triple-zero] { grid-area: triple-zero; }
+.btn[data-number="."] { grid-area: decimal; }
+.btn.equals { grid-area: equals; grid-column: span 2; }
+
+/* Adjust button styles for proper alignment */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        inset 0 -4px 0 rgba(0, 0, 0, 0.05),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Specific button styles */
+.btn[data-operation] {
+    background: linear-gradient(145deg, #3a5173, #2c3e50);
+    color: #ffffff;
+}
+
+.btn[data-all-clear],
+.btn[data-parens],
+.btn[data-square],
+.btn[data-root],
+.btn[data-delete] {
+    background: linear-gradient(145deg, #fdaa36, #be6c10);
+    color: #ffffff;
+}
+
+.btn.equals {
+    background: linear-gradient(145deg, #ffa114, #b3510b);
+    color: #ffffff;
+}
+
+.btn[data-number],
+.btn[data-triple-zero],
+.btn[data-number="."] {
+    background: linear-gradient(145deg, #c1c0c0, #b0afaf);
+    color: #2c3e50;
+}
+
+
+
+/* Socket panel texture */
+.buttons::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        /* Cross-hatching texture */
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.03) 2px,
+            rgba(0, 0, 0, 0.03) 4px
+        ),
+        /* Base gradient */
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.05) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.05) 100%
+        );
+    border-radius: 20px;
+    z-index: -1;
+}
+
+
+
+/* Individual button sockets */
+.buttons > * {
+    position: relative;
+    transform-style: preserve-3d;
+    margin: 2px;
+    padding: 2px;
+    background: 
+        radial-gradient(
+            circle at center,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.5) 70%,
+            rgba(0, 0, 0, 0.6) 100%
+        );
+    border-radius: 10px;
+}
+
+
+.buttons > *::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(
+            circle at center,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.7) 50%,
+            rgba(0, 0, 0, 0.8) 100%
+        );
+    border-radius: 8px;
+    box-shadow:
+        /* Deep inner shadows */
+        inset 0 4px 8px rgba(0, 0, 0, 0.9),
+        inset 0 2px 4px rgba(0, 0, 0, 0.9),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.8),
+        inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+    transform: translateZ(-6px);
+    z-index: -1;
+}
+
+/* Socket rim highlight */
+.buttons > *::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 9px;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 30%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    transform: translateZ(-5.5px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+
+/* Enhanced button styling */
+.btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    transform-style: preserve-3d;
+    min-height: 55px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Audiowide', cursive;
+    transform: translateZ(2px);
+    border-radius: 8px;
+    background: linear-gradient(
+        165deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    z-index: 2;
+    transform: translateZ(1.5px);
+    box-shadow: 
+        /* Outer edge */
+        -1px -1px 3px rgba(255, 255, 255, 0.2),
+        1.5px 1.5px 2px rgba(0, 0, 0, 0.4),
+        /* Mid-level shadow */
+        4px 4px 8px rgba(0, 0, 0, 0.2),
+        /* Button surface */
+        inset -2px -2px 4px rgba(0, 0, 0, 0.2),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+        /* Socket interaction */
+        0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific button styles */
+.btn[data-operation] {
+    background: linear-gradient(145deg, #3a5173, #2c3e50);
+    color: #ffffff;
+}
+.btn[data-all-clear],
+.btn[data-parens],
+.btn[data-square],
+.btn[data-root],
+.btn[data-delete] {
+    background: linear-gradient(145deg, #fdaa36, #be6c10);
+    color: #ffffff;
+}
+
+.btn.equals {
+    background: linear-gradient(145deg, #ffa114, #b3510b);
+    color: #ffffff;
+}
+
+.btn[data-number],
+.btn[data-triple-zero],
+.btn[data-number="."] {
+    background: linear-gradient(145deg, #c1c0c0, #b0afaf);
+}
+
+
+
+/* Enhanced button states */
+.btn:hover {
+    transform: translateZ(1.2px);
+    box-shadow: 
+        -1px -1px 3px rgba(255, 255, 255, 0.2),
+        2px 2px 3px rgba(0, 0, 0, 0.4),
+        4px 4px 8px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.2),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+        0 0 5px rgba(0, 0, 0, 0.35);
+}
+.btn:active {
+    transform: translateZ(0.5px);
+    box-shadow: 
+        -0.5px -0.5px 2px rgba(255, 255, 255, 0.1),
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        2px 2px 4px rgba(0, 0, 0, 0.2),
+        inset -1px -1px 3px rgba(0, 0, 0, 0.2),
+        inset 1px 1px 3px rgba(255, 255, 255, 0.1),
+        0 0 3px rgba(0, 0, 0, 0.4);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button reflection */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.5) 0%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+}
+
+.btn:hover::before {
+    opacity: 0.5;
+    transform: rotate(45deg) translateY(-10%);
+}
+
+
+
+
+
+/* Number buttons */
+.number {
+    background: linear-gradient(145deg, #c1c0c0, #b0afaf);
+    color: #2c3e50;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 
+        -1px -1px 3px rgba(255, 255, 255, 0.3),
+        1.5px 1.5px 2px rgba(0, 0, 0, 0.3),
+        4px 4px 8px rgba(0, 0, 0, 0.1),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.1),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.2),
+        0 0 4px rgba(0, 0, 0, 0.2);
+    transform: translateZ(2px);
+}
+
+
+
+/* Operator buttons */
+
+/* Operator buttons */
+.operator {
+    background: linear-gradient(145deg, #3a5173, #2c3e50);
+    color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        -1px -1px 3px rgba(255, 255, 255, 0.1),
+        1.5px 1.5px 2px rgba(0, 0, 0, 0.4),
+        4px 4px 8px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.3),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+        0 0 4px rgba(0, 0, 0, 0.2);
+        transform: translateZ(2px);
+}
+
+/* Function buttons */
+.function {
+    background: linear-gradient(145deg, #fdaa36, #be6c10);
+    color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 
+        -1px -1px 3px rgba(255, 255, 255, 0.2),
+        1.5px 1.5px 2px rgba(0, 0, 0, 0.4),
+        4px 4px 8px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.2),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.2),
+        0 0 4px rgba(0, 0, 0, 0.2);
+        transform: translateZ(2px);
+}
+
+.equals {
+    background: linear-gradient(145deg, #ffa114, #b3510b);
+    color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 
+        -1px -1px 3px rgba(255, 255, 255, 0.2),
+        1.5px 1.5px 2px rgba(0, 0, 0, 0.4),
+        4px 4px 8px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.2),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+
+
+/* Calculator bottom with screws */
+.calculator-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding: 0 10px;
+}
+
+.screw {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(145deg, #b8b8b8, #8a8a8a);
+    border-radius: 50%;
+    box-shadow: 
+        inset 1px 1px 2px rgba(255, 255, 255, 0.5),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.screw::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%);
+}
+
+.screw::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%);
+}
+
+
+.history {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.5); /* Dimmed color */
+    margin-bottom: 5px;
+}
+
+.history-item {
+    text-align: right;
+    margin-bottom: 2px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 480px) {
+    .calculator {
+        width: 100%;
+        max-width: 350px;
+        padding: 15px;
+    }
+
+    .btn {
+        min-height: 45px;
+        font-size: 1rem;
+    }
+
+    .display {
+        min-height: 60px;
+    }
+    
+    .shadow {
+        width: 320px;
+    }
+}
