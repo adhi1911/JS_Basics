@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Basics</title>
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+     <script src="https://unpkg.com/vue@3.0.2"></script>
+     <style>
+        .box{
+            padding: 100px;
+            width: 400px;
+            height: 200px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+        .booklist {
+            display: inline-block;
+            flex-wrap: wrap;
+
+        }
+
+        p{
+            font-size: 20px;
+            color: #333;
+        }
+
+        li{
+            list-style-type: none;
+            background: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px;   
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            justify-content: space-between;
+        }
+
+        li.fav {
+            background-color: #cef0fe;
+            border: 2px solid #2db6fb;
+        }
+
+     </style>
+</head>
+<body>
+    <!-- <h1>Hello, Vue :)</h1> -->
+
+    <div id="app">
+        <p>Controlled by Vue</p>
+        <!-- This is the template of the Vue app, but this gets replace by any template we define in the Vue instance. -->
+        <h3 v-if="show">{{ title }}</h3>
+
+        <p>Show : {{ show }}</p>
+        <!-- <button @click="toggleShow">Toggle Title</button> -->
+        <button v-on:click="toggleShow"><span>Toggle Title</span></button>
+        <br>
+        <br>
+        <label for="title">New Title:</label>
+        <input type="text" id="title" v-model="inputTitle" @keyup.enter="changeTitle">
+        <h4>Preview: {{inputTitle}}</h4>
+
+        <br>
+        <br>
+
+        <h3> {{age}} </h3>
+        <button @click="age++"><span>Increase Age</span></button>
+        <button @click="ageDec"><span>Decrease Age</span></button>
+
+        <br>
+        <br>
+
+        <!-- Mouse Events-->
+        <!--<h1> Mouse Events</h1>
+         <div class="box" @mouseover="handleEvent($event)">Mouseover (Enter) </div> -->
+         <!-- When we want to pass any other argument to the event handler, we can use the $event object to access the event object. -->
+         <!--
+         <div class="box" @mouseleave="handleEvent"> Mouse Leave</div>
+         <div class="box" @dblclick="handleEvent"> Double Click</div>
+         <div class="box" @mousemove="handleMouseMove">
+            Mouse Move
+            <p>Mouse Position: {{ x }}, {{ y }}</p>
+         </div> 
+        -->
+         <br>
+         <br>
+         <div class="books">
+         <h1> Books </h1>
+         <div class="booklist">
+            <ul>
+                <li v-for="book in books"
+                    :key="book.id"
+                    :class="{'fav' :book.isFav}"
+                    @dblclick="toggleFav(book)">
+                    <img :src="book.img" alt="Book Image" width="100">
+                    <h3>{{book.title}}</h3>
+                    <p>Author: {{book.author}}</p>
+                    <p v-if="book.isFav">This is a favorite book!</p>
+                    <button @click="removeBook(book.id)">Remove</button>
+                </li>
+                <br>
+            </ul>
+        </div>
+         <input type="text" v-model="newBookTitle" placeholder="Book Title">
+         <input type="text" v-model="newBookAuthor" placeholder="Author">
+         <input type="text" v-model="newBookFav" placeholder="Is Favorite (true/false)">
+         <input type="text" v-model="newBookImg" placeholder="Image URL">
+         <button @click="addBook">Add Book</button>
+         </div>
+            
+         
+        
+    </div>
+
+    <script  src="app.js"></script>
+</body>
+</html>

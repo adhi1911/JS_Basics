@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: rgb(192, 221, 246);" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+
+<script>
+    // Event Bubbling
+    const images = document.getElementById('images');
+    images.addEventListener('click', function(event) {
+        if (event.target.tagName === 'IMG') {
+            alert(`You clicked on ${event.target.id}`);
+        }
+    });
+
+    // Event Capturing
+    images.addEventListener('click', function(event) {
+        console.log('Event Captured at the parent level');
+    }, true); // true for capturing
+
+    // Event Delegation
+    const googleLink = document.getElementById('google');
+    googleLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default action of the link
+        alert('Google link clicked!');
+    });
+</script>
+
+</html>
+
+
+/*
+All events run sequentially 
+exceptions are asynchronous events
+1. Event Bubbling: The event starts from the target element and bubbles up to the root element.
+2. Event Capturing: The event starts from the root element and goes down to the target element.
+3. Event Delegation: A technique where a single event listener is added to a parent element to manage events for multiple child elements.
+4. Event Propagation: The process of how events travel through the DOM tree, either bubbling or capturing.
+5. Event Target: The element that triggered the event.
+6. Event Object: An object that contains information about the event, such as the type of event, target element, and other properties.
+
+*/
